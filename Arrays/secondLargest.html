@@ -1,0 +1,47 @@
+<script> 
+    function main(arr){
+     if(arr.length <= 1) return arr
+     let largestElem = arr[0] 
+     let secondLargest = null
+ 
+     for(let i=1; i < arr.length; i++){
+        if(arr[i] > largestElem){
+          largestElem = arr[i]
+     }}
+     
+     for(let i=0; i < arr.length; i++){
+      if(arr[i] < largestElem && arr[i] > secondLargest){
+       secondLargest = arr[i]
+      }
+     }
+     console.log(secondLargest);
+    }
+    //main([2,4,5,6,8, 10, 12])
+
+    function optimalSolution(arr) {
+    if (arr.length < 2) {
+        return "The array doesn't have a second-largest element.";
+    }
+
+    let largest = -Infinity;
+    let secondLargest = -Infinity;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] < largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    if (secondLargest === -Infinity) {
+        return "There is no second-largest element in the array.";
+    }
+
+    return secondLargest;
+}
+ const arr = [2, 4, 5, 6, 8, 10, 12];
+ console.log(optimalSolution(arr));
+
+ </script>
